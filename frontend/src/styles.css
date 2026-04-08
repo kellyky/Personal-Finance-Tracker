@@ -1,1 +1,51 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'Public Sans';
+  src: url('/assets/fonts/PublicSans-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  src: url('/assets/fonts/PublicSans-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+}
+
+:root {
+  --white: #ffffff;
+  --beige-500: #98908B;
+  --beige-100: #F8F4F0;
+  --grey-900: #201F24;
+  --grey-500: #6b7280;
+  --grey-300: #B3B3B3;
+  --grey-100: #F2F2F2;
+  --secondary-green: #277c78;
+  --secondary-yellow: #F2CDAC;
+  --secondary-cyan: #82C9D7;
+  --secondary-navy: #626070;
+  --secondary-red: #C94736;
+  --secondary-purple: #826CB0;
+  --purple: #AF81BA;
+  --turquoise: #597C7C;
+  --brown: #93674F;
+  --magenta: #934F6F;
+  --blue: #3F82B2;
+  --navy-grey: #97A0AC;
+  --army-green:#7F9161;
+  --gold: #CAB361;
+  --organge: #BE6C49;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: 'Public Sans', Arial, sans-serif;
+  background-color: var(--beige-100);
+  color: var(--grey-900);
+}
