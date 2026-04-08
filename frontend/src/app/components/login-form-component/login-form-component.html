@@ -1,0 +1,43 @@
+<div class="form-content">
+  <h1>{{ mode === 'login' ? 'Login' : 'Sign Up' }}</h1>
+  <form>
+    @if (mode === 'signup') {
+    <div>
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" />
+    </div>
+    }
+    <div>
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" />
+    </div>
+    <div class="password-field">
+      <label for="password">Password</label>
+      <div class="input-wrapper">
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          name="password"
+          id="password"
+        />
+        <img
+          [src]="
+            showPassword
+              ? '/assets/images/icon-show-password.svg'
+              : '/assets/images/icon-hide-password.svg'
+          "
+          alt="Toggle Password Visibility"
+          class="toggle-icon"
+          (click)="togglePasswordVisibility()"
+        />
+      </div>
+    </div>
+    <button type="submit">{{ mode === 'login' ? 'Login' : 'Create Account' }}</button>
+  </form>
+
+  @if (mode === 'login') {
+  <span>Need to create your account? <a routerLink="/signUp">Sign Up</a></span>
+  } @else {
+  <span>Already have an account? <a routerLink="/">Login</a></span>
+  }
+</div>
+
