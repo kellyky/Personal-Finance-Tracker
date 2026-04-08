@@ -20,7 +20,7 @@ header div {
   display: none;
 }
 
-.content {
+.form-content {
   display: flex;
   width: 100%;
   flex: 1;
@@ -84,7 +84,7 @@ header div {
     line-height: 1.5;
   }
 
-  .content {
+  .form-content {
     flex-direction:row;
     padding: 20px;
     gap: 20px;
