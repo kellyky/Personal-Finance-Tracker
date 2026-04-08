@@ -1,0 +1,107 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 100vh;
+}
+
+header {
+  background-color: var(--grey-900);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 24px 0; 
+  border-radius: 0 0 8px 8px;
+  max-width: 100%;
+}
+
+header div {
+  display: none;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  flex: 1;
+  flex-direction:column;
+  box-sizing: border-box;
+}
+
+.logo {
+  display: block;
+}
+
+.illustration {
+  display: none;
+}
+
+.form {
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  flex: 1 1 auto;
+}
+
+@media screen and (min-width: 1024px) {
+  :host {
+    height: 100vh;
+  }
+
+  header {
+    background-image: url("/assets/images/illustration-authentication.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: transparent;
+    display: flex;
+    flex: 0 0 600px; 
+    height: 100%;
+    padding: 40px;
+    border-radius: 12px;
+    color: var(--white);
+    box-sizing: border-box;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0;
+  }
+
+  header div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    width: 100%;
+  }
+
+  header div h2 {
+    font-size: 32px;
+    margin:0;
+  }
+
+  header div p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .content {
+    flex-direction:row;
+    padding: 20px;
+    gap: 20px;
+    height: 100%;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  header .logo {
+    display: block;
+  }
+
+  .illustration {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+  }
+}
