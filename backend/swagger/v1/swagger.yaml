@@ -41,6 +41,7 @@ paths:
               required:
               - email_address
               - password
+          description: invalid request
   "/v1/login":
     post:
       summary: Creates a session
