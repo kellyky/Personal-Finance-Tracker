@@ -8,13 +8,11 @@ class V1::SessionsController < ApplicationController
   def create
     if user = User.authenticate_by(params.permit(:email_address, :password))
       start_new_session_for user
-      render json: {
-        data: {
-          token: Current.session.token
-        }
-      }
+      token = Current.session.token
+      expires_at = JsonWebToken.decode(token)[:exp]
+      render json: { token:, expires_at: }, status: :ok
     else
-      render json: {}, status: :unauthorized
+      render json: { error: 'unauthorized' }, status: :unauthorized
     end
   end
 
