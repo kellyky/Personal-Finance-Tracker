@@ -1,0 +1,68 @@
+---
+openapi: 3.0.1
+info:
+  title: Personal Financial Tracker v1
+  version: v1
+paths:
+  "/v1/signup":
+    post:
+      summary: Creates a new user
+      tags:
+        - Sessions
+      parameters: []
+      responses:
+        '201':
+          description: user created
+        '400':
+          description: bad request
+        '500':
+          description: Internal Server Error
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  default: 'example'
+                email_address:
+                  type: string
+                  default: 'two@example.com'
+                password:
+                  type: string
+                  default: 'password'
+              required:
+              - email_address
+              - password
+  "/v1/login":
+    post:
+      summary: Creates a session
+      tags:
+      - Sessions
+      parameters: []
+      responses:
+        '201':
+          description: session created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email_address:
+                  type: string
+                  default: 'one@example.com'
+                password:
+                  type: string
+                  default: 'password'
+              required:
+              - email_address
+              - password
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000
