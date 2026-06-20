@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   namespace :v1 do
     post '/signup', to: 'registration#create'
     post '/login', to: 'sessions#create'
+    delete '/logout', to: 'sessions#destroy'
     resource :passwords, param: :token
   end
+
+  root to: 'swagger#index'
 end

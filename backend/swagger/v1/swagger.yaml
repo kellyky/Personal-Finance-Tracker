@@ -3,6 +3,12 @@ openapi: 3.0.1
 info:
   title: Personal Financial Tracker v1
   version: v1
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 paths:
   "/v1/signup":
     post:
@@ -44,8 +50,10 @@ paths:
       responses:
         '201':
           description: session created
-        '422':
-          description: invalid request
+        '400':
+          description: bad request
+        '500':
+          description: Internal Server Error
       requestBody:
         content:
           application/json:
@@ -61,6 +69,21 @@ paths:
               required:
               - email_address
               - password
+  "/v1/logout":
+    delete:
+      summary: Destroys a session
+      security:
+        - bearerAuth: []
+      tags:
+      - Sessions
+      parameters: []
+      responses:
+        '201':
+          description: session created
+        '400':
+          description: bad request
+        '500':
+          description: Internal Server Error
 servers:
 - url: http://{defaultHost}
   variables:
