@@ -21,8 +21,7 @@ module Authentication
     end
 
     def request_authentication
-      session[:return_to_after_authenticating] = request.url
-      redirect_to new_session_path
+      head :unauthorized
     end
 
     def after_authentication_url
