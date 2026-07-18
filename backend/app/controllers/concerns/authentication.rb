@@ -17,11 +17,11 @@ module Authentication
     end
 
     def require_authentication
-      resume_session || request_authentication
+      resume_session || render_unauthorized
     end
 
-    def request_authentication
-      head :unauthorized
+    def render_unauthorized
+      render json: { error: "Unauthorized" }, status: :unauthorized
     end
 
     def after_authentication_url

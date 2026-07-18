@@ -1,4 +1,4 @@
-class V1::RegistrationController < ApplicationController
+class V1::RegistrationsController < ApplicationController
   allow_unauthenticated_access only: %i[ create ]
 
   skip_before_action :authenticate
@@ -11,11 +11,13 @@ class V1::RegistrationController < ApplicationController
     else
       render json: { error: user.errors.full_messages }, status: :unprocessable_content
     end
+  rescue ActiveRecord::RecordNotUnique => e
+    render json: { error: ["There was a problem creating your account"] }, status: :unprocessable_content
   end
 
   private
 
   def user_params
-    params.permit(:name, :email_address, :password)
+    params.permit(:name, :email_address, :password, :password_confirmation)
   end
 end
