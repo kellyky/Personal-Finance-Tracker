@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     post '/signup', to: 'registration#create'
     post '/login', to: 'sessions#create'
     delete '/logout', to: 'sessions#destroy'
-    resource :passwords, param: :token
+    resources :passwords, param: :token
     resources :registrations, only: %i[create]
   end
 end
