@@ -1,0 +1,43 @@
+{
+  "Minitest": {
+    "coverage": {
+      "/Users/kelly/repos/angularrrr/personal-finance-app/backend/app/controllers/application_controller.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "/Users/kelly/repos/angularrrr/personal-finance-app/backend/app/jobs/application_job.rb": {
+        "lines": [
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "branches": {}
+      },
+      "/Users/kelly/repos/angularrrr/personal-finance-app/backend/app/mailers/application_mailer.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "/Users/kelly/repos/angularrrr/personal-finance-app/backend/app/models/application_record.rb": {
+        "lines": [
+          0,
+          0,
+          0
+        ],
+        "branches": {}
+      }
+    },
+    "timestamp": 1782959477
+  }
+}
