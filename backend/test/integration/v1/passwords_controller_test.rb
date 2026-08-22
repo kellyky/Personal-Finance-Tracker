@@ -17,7 +17,7 @@ class V1::PasswordsControllerTest < ActionDispatch::IntegrationTest
 
     assert_no_enqueued_emails do
       post v1_passwords_path, params: params
-      assert_response :success
+      assert_response :not_found
     end
   end
 
@@ -26,7 +26,13 @@ class V1::PasswordsControllerTest < ActionDispatch::IntegrationTest
     token = user.password_reset_token
     new_password = "newpassword"
 
-    put v1_password_path(token), params: { password: new_password, password_confirmation: new_password }
+    headers = { Authorization: "Bearer #{token}" }
+    params = {
+      password: new_password,
+      password_confirmation: new_password
+    }
+
+    put v1_password_path(token), params: params, headers: headers
     assert_response :success
 
     assert user.reload.authenticate(new_password)
@@ -38,11 +44,18 @@ class V1::PasswordsControllerTest < ActionDispatch::IntegrationTest
     token = user.password_reset_token
     new_password = "newpassword"
 
-    put v1_password_path(token), params: { password: new_password, password_confirmation: "wrongpassword" }
+    headers = { Authorization: "Bearer #{token}" }
+    params = {
+      password: new_password,
+      password_confirmation: "wrongpassword",
+      token: token
+    }
+
+    put v1_password_path(token), params: params, headers: headers
     assert_response :unprocessable_entity
 
     response_data = JSON.parse(response.body)
-    assert_equal ["Password confirmation doesn't match Password"], response_data["errors"]
+    assert_equal ["Password confirmation doesn't match Password"], response_data["error"]
   end
 
   private

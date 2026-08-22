@@ -9,7 +9,6 @@ class ApplicationController < ActionController::API
   private
 
   def authenticate
-    binding.irb
     authorization_header = request.headers['Authorization']
     token = authorization_header.split(' ').last if authorization_header
     decoded_token = JsonWebToken.decode(token)

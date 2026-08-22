@@ -46,7 +46,7 @@ module Authentication
     end
 
     def find_session_by_token
-      token = request.headers[:authorization]&.split(" ")[-1]
+      token = request.headers[:Authorization]&.split(" ")[-1]
       Session.find_by(token:)
     end
 end
