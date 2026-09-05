@@ -2,6 +2,7 @@
 require 'test_helper'
 
 class V1::RegistrationsControllerTest < ActionDispatch::IntegrationTest
+
   test 'should create user' do
     params = {
       name: 'name',
@@ -65,5 +66,6 @@ class V1::RegistrationsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_equal 'test@example.com', User.last.email_address
   end
+
 end
 

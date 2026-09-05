@@ -1,6 +1,7 @@
 class V1::PasswordsController < ApplicationController
+
   skip_before_action :authenticate, only: %i[create update]
-  allow_unauthenticated_access only: %i[create update]     
+  allow_unauthenticated_access only: %i[create update]
   before_action :set_user_by_token, only: %i[update]
 
   def create
@@ -29,4 +30,5 @@ class V1::PasswordsController < ApplicationController
     render json: { message: 'Password reset link is invalid or has expired.' },
       status: :unauthorized
   end
+
 end

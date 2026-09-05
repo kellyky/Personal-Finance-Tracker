@@ -1,4 +1,5 @@
 class Session < ApplicationRecord
+
   belongs_to :user
   before_validation :generate_token, on: :create
 
@@ -7,4 +8,5 @@ class Session < ApplicationRecord
   def generate_token
     self.token = JsonWebToken.encode({jit: user.id})
   end
+
 end

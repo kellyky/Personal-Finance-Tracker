@@ -63,4 +63,5 @@ class V1::PasswordsControllerTest < ActionDispatch::IntegrationTest
   def assert_notice(text)
     assert_select 'div', /#{text}/
   end
+
 end

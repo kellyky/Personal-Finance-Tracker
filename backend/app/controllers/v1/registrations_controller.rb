@@ -1,4 +1,5 @@
 class V1::RegistrationsController < ApplicationController
+
   allow_unauthenticated_access only: %i[ create ]
 
   skip_before_action :authenticate
@@ -20,4 +21,5 @@ class V1::RegistrationsController < ApplicationController
   def user_params
     params.permit(:name, :email_address, :password, :password_confirmation)
   end
+
 end

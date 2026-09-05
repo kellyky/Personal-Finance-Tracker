@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::API
+
   include Authentication
 
   before_action :authenticate
@@ -24,4 +25,5 @@ class ApplicationController < ActionController::API
   def decode_error
     render json: { decode_error: 'decode error' }
   end
+
 end
