@@ -8,7 +8,14 @@ class V1::RegistrationsController < ApplicationController
     user = User.new(user_params)
     if user.save
       start_new_session_for user
-      render json: { token: Current.session.token, user: user.as_json }, status: :created
+      render json: {
+        token: Current.session.token,
+        user: {
+          id: user.public_id,
+          email_address: user.email_address,
+          name: user.name
+        }
+      }, status: :created
     else
       render json: { error: user.errors.full_messages }, status: :unprocessable_content
     end
