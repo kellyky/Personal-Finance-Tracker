@@ -12,41 +12,42 @@ module Authentication
   end
 
   private
-    def authenticated?
-      resume_session
-    end
 
-    def require_authentication
-      resume_session || render_unauthorized
-    end
+  def authenticated?
+    resume_session
+  end
 
-    def render_unauthorized
-      render json: { error: "Unauthorized" }, status: :unauthorized
-    end
+  def require_authentication
+    resume_session || render_unauthorized
+  end
 
-    def after_authentication_url
-      session.delete(:return_to_after_authenticating) || root_url
-    end
+  def render_unauthorized
+    render json: { error: "Unauthorized" }, status: :unauthorized
+  end
 
-    def start_new_session_for(user)
-      user_agent = request.user_agent
-      ip_address = request.remote_ip
+  def after_authentication_url
+    session.delete(:return_to_after_authenticating) || root_url
+  end
 
-      user.sessions.create!(user_agent:, ip_address:).tap do |session|
-        Current.session = session
-      end
-    end
+  def start_new_session_for(user)
+    user_agent = request.user_agent
+    ip_address = request.remote_ip
 
-    def terminate_session
-      Current.session.destroy
+    user.sessions.create!(user_agent:, ip_address:).tap do |session|
+      Current.session = session
     end
+  end
 
-    def resume_session
-      Current.session = find_session_by_token
-    end
+  def terminate_session
+    Current.session.destroy
+  end
 
-    def find_session_by_token
-      token = request.headers[:Authorization]&.split(" ")[-1]
-      Session.find_by(token:)
-    end
+  def resume_session
+    Current.session = find_session_by_token
+  end
+
+  def find_session_by_token
+    token = request.headers[:Authorization]&.split(" ")[-1]
+    Session.find_by(token:)
+  end
 end
