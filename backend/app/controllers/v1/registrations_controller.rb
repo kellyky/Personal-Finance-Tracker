@@ -12,7 +12,7 @@ class V1::RegistrationsController < ApplicationController
       render json: { error: user.errors.full_messages }, status: :unprocessable_content
     end
   rescue ActiveRecord::RecordNotUnique => e
-    render json: { error: ["There was a problem creating your account"] }, status: :unprocessable_content
+    render json: { error: ['There was a problem creating your account'] }, status: :unprocessable_content
   end
 
   private

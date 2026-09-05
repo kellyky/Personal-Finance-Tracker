@@ -22,7 +22,7 @@ module Authentication
   end
 
   def render_unauthorized
-    render json: { error: "Unauthorized" }, status: :unauthorized
+    render json: { error: 'Unauthorized' }, status: :unauthorized
   end
 
   def after_authentication_url
@@ -47,7 +47,7 @@ module Authentication
   end
 
   def find_session_by_token
-    token = request.headers[:Authorization]&.split(" ")[-1]
+    token = request.headers[:Authorization]&.split(' ')[-1]
     Session.find_by(token:)
   end
 end
